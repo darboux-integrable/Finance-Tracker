@@ -30,13 +30,12 @@ const chart = new Chart(ctx, {
         animation: {
             duration: 500,
             easing: 'easeOutElastic'
-
         },
         scales: { // Disables axes
             x: {
                 ticks: {
-                    minRotation: 25,
-                    maxRotation: 25
+                    minRotation: 0,
+                    maxRotation: 0
                 },
             },
             y: {
@@ -66,7 +65,23 @@ function newDataPoints() {
         if(chart.data.labels.length > 6){
             dataset.data.shift();
         }
-        dataset.data.push(Math.floor(Math.random() * 100)); // Random datapoint for each line
+
+        let dataSetLastVal = dataset.data[dataset.data.length-1];
+        if(dataSetLastVal >= 10){
+
+        } else if(dataSetLastVal > 10 && dataSetLastVal <= 0) {
+
+        }
+
+        dataset.data.push(dataset.data[dataset.data.length-1]+(Math.floor(Math.random() * 50)-25)); // Random datapoint for each line
+
+        if(dataset.data[dataset.data.length-1] > 100) {
+            dataset.data[dataset.data.length-1] = 100;
+        }
+        if(dataset.data[dataset.data.length-1] < 0) {
+            dataset.data[dataset.data.length-1] = 0;
+        }
+        console.log(dataset.data[dataset.data.length-1]);
     });
 
     if(chart.data.labels.length > 6){

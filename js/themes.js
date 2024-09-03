@@ -8,6 +8,9 @@ const changeIcon = document.getElementById("changeIcon");
 */
 function loadTheme(){
     let theme = localStorage.getItem("theme");
+    if(theme == null) {
+        localStorage.setItem("theme", "sunny");
+    }
     rootCSS.setAttribute("data-theme", theme);
     changeIcon.setAttribute("name", theme);
 }
