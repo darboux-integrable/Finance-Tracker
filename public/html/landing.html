@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Finance Tracker</title>
+    <link rel="icon" href="./resources/Icon.svg">
+    <script src="../js/index.js" defer type="module"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+</head>
+    <body>
+
+    <nav class="nav-bar">
+        <div class="nav-logo-container">
+            <img src="../resources/Icon.svg" alt="Website Icon" class="logo-img">
+            <h1 class="nav-title">Wallet Watcher</h1>
+        </div>
+        <div class="nav-buttons">
+            <button class="nav-button nav-about">About</button>
+            <button class="nav-button nav-use">How To Use</button>
+            <button class="nav-button nav-application">Download</button>
+            <button class="nav-button nav-user-btn" id="loginButton">Log In</button>
+            <button class="theme-changer" id="themeBtn">
+                <img src="../resources/ionicons/sunny.svg" id="changeIcon" data-theme="sunny" alt="☀️" class="change-icon"/>
+            </button>
+        </div>
+    </nav>
+
+    <section class="landing-section">
+        <div class="page-title-container">
+            <h1 class="page-title">The Best<br>Financial Tracker</h1>
+        </div>
+        <div class="opening-graph-container">
+            <!-- Opening Graph Animation -->
+            <canvas id="openingGraph" class="opening-graph"></canvas>
+        </div>
+    </section>
+
+
+    <!-- <img src="./resources/landing-about-transition-waves.svg" alt="" class="landing-about-transition"> -->
+    
+    <div class="blue-waves-container">
+        <div class="blue-wave5 blue-wave top-blue-wave" id="blueWave5" data-src="../resources/waves/blue-wave5.svg" ><img  alt=""></div>
+        <div class="blue-wave4 blue-wave top-blue-wave" id="blueWave4" data-src="../resources/waves/blue-wave4.svg" ><img  alt=""></div>
+        <div class="blue-wave3 blue-wave top-blue-wave" id="blueWave3" data-src="../resources/waves/blue-wave3.svg" ><img  alt=""></div>
+        <div class="blue-wave2 blue-wave top-blue-wave" id="blueWave2" data-src="../resources/waves/blue-wave2.svg" ><img  alt=""></div>
+        <div class="blue-wave1 blue-wave top-blue-wave" id="blueWave1" data-src="../resources/waves/blue-wave1.svg" ><img  alt=""></div>
+    </div>
+
+    <section class="about-section">
+
+        <div class="about-text-container">
+            <h1 class="about-title">About</h1>
+            <h2 class="about-text">
+                Wallet Watcher is a comprehensive solution for mastering your financial management. We understand that keeping tabs on your finances can be challenging, which is why we’ve designed a user-friendly platform to streamline the process.
+                With Finance Tracker, you’ll have all the tools you need to stay on top of your finances and make informed decisions with confidence. Start simplifying your financial life today!
+            </h2>
+
+            <div class="about-facts-grid">
+                <p class="fact">
+                    Current Balance Tracking: Monitor your financial status in real-time with our intuitive dashboard, giving you a clear view of your balance at any moment.
+                </p>
+                <p class="fact">
+                    Income Management: Effortlessly add and manage multiple income sources, whether it’s from your salary, side gigs, or investments.
+                </p>
+                <p class="fact">
+                    Expense Recording: Track and categorize your expenses to gain insights into your spending habits and discover opportunities to save.
+
+                </p>
+                <p class="fact">
+                    Balance Visualization: Visualize your balance over time with a comprehensive graph, helping you to easily identify trends and patterns in your financial journey.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- <img class="about-download-img" src="./resources/about-download-transition2.svg" alt=""> -->
+    <div class="bottom-blue-waves-container">
+        <div class="blue-wave10" id="blueWave10" data-src="" ><img alt="" src="../resources/waves/blue-wave10.svg"></div>
+        <div class="blue-wave9 blue-wave bottom-blue-wave" id="blueWave9" data-src="../resources/waves/blue-wave9.svg" ><img  alt=""></div>
+        <div class="blue-wave8 blue-wave bottom-blue-wave" id="blueWave8" data-src="../resources/waves/blue-wave8.svg" ><img  alt=""></div>
+        <div class="blue-wave7 blue-wave bottom-blue-wave" id="blueWave7" data-src="../resources/waves/blue-wave7.svg" ><img  alt=""></div>
+        <div class="blue-wave6 blue-wave bottom-blue-wave" id="blueWave6" data-src="../resources/waves/blue-wave6.svg" ><img  alt=""></div>
+    </div>
+
+    <div class="top-purple-waves-container">
+        <div class="purple-wave5" data-src=""><img src="../resources/waves/purple-wave5.svg" alt=""></div>
+        <div class="purple-wave purple-wave4 purple-top-wave" data-src="../resources/waves/purple-wave4.svg"><img alt=""></div>
+        <div class="purple-wave purple-wave3 purple-top-wave" data-src="../resources/waves/purple-wave3.svg"><img alt=""></div>
+        <div class="purple-wave purple-wave2 purple-top-wave" data-src="../resources/waves/purple-wave2.svg"><img alt=""></div>
+        <div class="purple-wave purple-wave1 purple-top-wave" data-src="../resources/waves/purple-wave1.svg"><img alt=""></div>
+    
+    </div>
+
+    <section class="download-section">
+        <h1 class="download-title">Download</h1>
+        <h2 class="download-text">Try finance tracker now! Its free and easy to use!</h2>
+        <div class="download-button-container">
+            <canvas class="download-button-canvas" id="downloadCanvas"></canvas>
+            <button class="download-button" id="downloadBtn">Download</button>
+        </div>
+    </section>
+
+    
+
+    <script type="module" src="../js/pageObservers.js"></script>
+    <script src="../js/downloadCanvas.js"></script>
+    <script src="../js/landingGraph.js" type="module"></script>
+    </body>
+</html>
