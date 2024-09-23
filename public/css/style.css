@@ -1,0 +1,496 @@
+:root:not([data-theme="moon"]){
+    --page-bg-color: #fff; 
+
+    --background-color-1: #170312;
+    --background-color-2: #377AA9;
+    --background-color-3: #28587b;
+    --background-color-4: #66C3FF;
+    --background-color-5: #3d3879;
+
+    --dark-border-color-1: #66C3FF;
+
+    --nav-text-color: #fff;
+
+    --wave-color-1: #66c3ff;
+    --wave-color-2: #57a7dd;
+    --wave-color-3: #478bbb;
+    --wave-color-4: #37719a;
+    --wave-color-5: #28587b;
+    --wave-color-6: #655cc5;
+    --wave-color-7: #5a53b1;
+    --wave-color-8: #504a9e;
+    --wave-color-9: #46418b;
+    --wave-color-10: #3d3879;
+
+    --blue-waves-delay: 100ms;
+}
+
+:root[data-theme="moon"] {
+
+    --page-bg-color: #fff; 
+
+    --background-color-1: #170312;
+    --background-color-2: #377AA9;
+    --background-color-3: #28587b;
+    --background-color-4: #66C3FF;
+    --background-color-5: #3d3879;
+
+    --dark-border-color-1: #66C3FF;
+
+    --nav-text-color: #fff;
+
+    --wave-color-1: #66c3ff;
+    --wave-color-2: #57a7dd;
+    --wave-color-3: #478bbb;
+    --wave-color-4: #37719a;
+    --wave-color-5: #28587b;
+    --wave-color-6: #655cc5;
+    --wave-color-7: #5a53b1;
+    --wave-color-8: #504a9e;
+    --wave-color-9: #46418b;
+    --wave-color-10: #3d3879;
+
+    --blue-waves-delay: 100ms;
+
+}
+
+
+body, html{
+    height: 100%;
+    margin: 0;
+}
+
+body{
+    background-color: var(--page-bg-color);
+}
+
+/* Navigation Bar Styles */
+.nav-bar{
+    position: sticky;
+    top: 0px;
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 100px;
+    background-color: var(--background-color-1);
+    color: var(--nav-text-color);
+    z-index: 10 !important;
+}
+
+.nav-logo-container{
+    display: flex;
+    align-items: center;
+}
+
+
+.logo-img{
+    width: 50px;
+    height: 50px;
+}
+
+.change-icon{
+    width: 20px;
+    height: 20px;
+    filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(170deg) brightness(110%) contrast(101%);
+}
+
+.nav-title{
+    padding-inline: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.nav-buttons{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+}
+
+.nav-button{
+    height: 35px;
+    flex-grow: 1;
+    background-color: none;
+    cursor: pointer;
+    border: none;
+    color: var(--nav-text-color);
+    font-size: medium;
+
+    
+}
+
+.nav-button:not(.nav-user-btn){
+    /* Slide In and Out underline */
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 0px 3px;
+    background-image: linear-gradient(var(--dark-border-color-1), var(--dark-border-color-1));
+    background-position-y: 32px;
+    transition: background-size 250ms;
+}
+
+.nav-button:not(.nav-user-btn):hover{
+    background-size: 100% 3px;
+}
+
+.nav-user-btn{
+    position: relative;
+    padding-inline: 20px;
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    background-size: 0 100%;
+    background-image: linear-gradient(90deg, var(--background-color-4), var(--background-color-4));
+    cursor: pointer;
+    background-color: transparent;
+    transition: background-size 150ms linear;
+    z-index: 2;
+}
+
+.nav-user-btn:hover{
+    background-size: 100% 100%;
+}
+
+.nav-user-btn::before{
+    z-index: -1;
+    content: "";
+    position: absolute;
+    background-color: var(--background-color-2);
+    
+    /*Approximately position the before element in the center of its parent*/
+    left: 2.9%;
+    top: 5%;
+    width: 94%;
+    height: 90%;
+    border-radius: 8px;
+}
+
+.theme-changer{
+    background-color: transparent;
+    border: none;
+    color: var(--nav-text-color);
+    font-size: larger;
+    cursor: pointer;
+}
+.changeIcon{
+    width: 32px;
+    height: 32px;
+}
+
+/*Landing Section Styles*/
+.landing-section{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-inline: 50px;
+    padding-bottom: 100px;
+}
+
+.page-title{
+    position: relative;
+    animation: slide-right 500ms forwards,
+                 fade-in 500ms forwards;
+    font-size: 4rem;
+    margin: 0px;
+    display: flex;
+    flex-direction: column-reverse;
+    background-color: var(--page-bg-color);
+}
+
+.page-title-container{
+    display: flex;
+    align-items: center;
+}
+
+.page-title::before{
+    content: "For all your financial needs";
+    position: relative;
+    font-size:x-large;
+    opacity: 0;
+    animation: 400ms ease-in-out 750ms translate-down forwards,
+                 250ms linear 750ms fade-in forwards;
+}
+
+
+.opening-graph-container{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-grow: 1;
+}
+
+.opening-graph{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+/* About Section */
+.blue-waves-container{
+    position: relative;
+}
+
+
+.top-blue-wave{
+    opacity: 0;
+    width: 100%;
+}
+
+.top-blue-wave:not(.blue-wave1){
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.top-blue-wave::before, .purple-top-wave::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    top: calc(100% - 10px);
+    left: 0;
+}
+
+.blue-wave1::before{
+    background-color: var(--wave-color-1);
+}
+.blue-wave2::before{
+    background-color: var(--wave-color-2);
+}
+.blue-wave3::before{
+    background-color: var(--wave-color-3);
+}
+.blue-wave4::before{
+    background-color: var(--wave-color-4);
+}
+.blue-wave5::before{
+    background-color: var(--wave-color-5);
+}
+
+
+.about-section{
+    position: relative;
+    top: -0px;
+    background-color: var(--background-color-3);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 50px;
+    color: var(--nav-text-color);
+    font-family: Arial, Helvetica, sans-serif;
+    z-index: 6;
+    opacity: 0;
+}
+
+.about-title, .about-text{
+    color: transparent;
+    transition: color 500ms linear;
+}
+
+.about-text-container{
+    width: 60%;
+}
+
+.about-facts-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-inline: 40px;
+    gap: 20px;
+}
+
+.fact{
+    border-top: var(--background-color-4) 3px solid;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+}
+
+.about-title{
+    text-align: center;
+    margin: 0;
+
+    font-size: 3rem;
+    font-family: "Nerko One", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.bottom-blue-waves-container{
+    position: relative;
+    width: 100%;
+    height: fit-content;
+}
+
+
+.bottom-blue-wave:not(.blue-wave6){
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.bottom-blue-wave{
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.blue-wave6{
+    position: relative;
+    z-index: 1;
+}
+.blue-wave7, .purple-wave2, .blue-wave2{
+    z-index: 2;
+}
+.blue-wave8, .purple-wave3, .blue-wave3{
+    z-index: 3;
+}
+.blue-wave9, .purple-wave4, .blue-wave4{
+    z-index: 4;
+}
+
+.blue-wave5{
+    z-index: 5;
+}
+
+.blue-wave1, .purple-wave1{
+    z-index: 1;
+}
+
+.blue-wave10{
+    position: absolute;
+    top: -1px;
+    width: 100%;
+    left: 0;
+    z-index: 5;
+}
+
+/* Download */
+
+.top-purple-waves-container{
+    position: relative;
+    margin-top: 134.74px;
+}
+
+
+.purple-top-wave{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.purple-wave5{
+    position: relative;
+    z-index: 5;
+}
+
+.purple-wave1::before{
+    background-color: var(--wave-color-6);
+}
+.purple-wave2::before{
+    background-color: var(--wave-color-7);
+}
+.purple-wave3::before{
+    background-color: var(--wave-color-8);
+}
+.purple-wave4::before{
+    background-color: var(--wave-color-9);
+}
+.purple-wave5::before{
+    background-color: var(--wave-color-10);
+}
+
+.about-download-img{
+    position: relative;
+    top: -5px;
+}
+
+.download-section{
+    position: relative;
+    top: -10px;
+    background-color: var(--background-color-5);
+    padding-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 6;
+}
+
+.download-title{
+    margin: 0;
+
+    font-size: 3rem;
+    font-family: "Nerko One", cursive;
+    font-weight: 400;
+    font-style: normal;
+
+    text-align: center;
+    color: var(--nav-text-color);
+}
+
+.download-text{
+    text-align: center;
+    font-family: Arial, serif;
+    color: var(--nav-text-color);
+}
+
+.download-button-container{
+    position: relative;
+    width: 300px;
+    height: 100px;
+    display: flex;
+}
+
+.download-button-canvas{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.download-button{
+    position: absolute;
+    background-color: transparent;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* ANIMATIONS */
+@keyframes slide-right {
+    0%{
+        translate: -100%;
+    }
+    100%{
+        translate: 0px;
+    }
+}
+
+@keyframes translate-down {
+    0%{
+        transform: translateY(-100%);
+    }
+
+    100%{
+        transform: translateY(0px);
+    }
+}
+
+@keyframes blue-wave-translate-up{
+    0%{
+        transform: translateY(100px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+
+@keyframes fade-in{
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}

@@ -1,0 +1,107 @@
+:root:not([data-theme="moon"]){
+    --page-bg-color: #fff;
+
+    --background-color-1: #170312;
+    --background-color-2: #377AA9;
+    --background-color-3: #28587b;
+    --background-color-4: #66C3FF;
+    --background-color-5: #3d3879;
+
+    --dark-border-color-1: #66C3FF;
+
+    --nav-text-color: #fff;
+
+    --wave-color-1: #66c3ff;
+    --wave-color-2: #57a7dd;
+    --wave-color-3: #478bbb;
+    --wave-color-4: #37719a;
+    --wave-color-5: #28587b;
+    --wave-color-6: #655cc5;
+    --wave-color-7: #5a53b1;
+    --wave-color-8: #504a9e;
+    --wave-color-9: #46418b;
+    --wave-color-10: #3d3879;
+
+    --blue-waves-delay: 100ms;
+}
+.incomes-wrapper{
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+}
+
+.create-income-container {
+    width: 75%;
+    border-radius: 10px;
+    display: flex;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background-color: var(--page-bg-color);
+}
+
+.create-income-container::after{
+    --border-width: 15px;
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: calc(100% + var(--border-width));
+    height: calc(100% + var(--border-width));
+
+    top: calc(var(--border-width) / 2 * -1);
+    left: calc(var(--border-width) / 2 * -1);
+
+    border-radius: 15px;
+    background-color: var(--background-color-3);
+}
+
+.create-recurring-income-container, .create-onetime-income-container{
+    display: flex;
+    padding-inline: 10px;
+}
+
+.data-collector-labels{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.data-collector-inputs{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-left: 10px;
+}
+
+.display-income-container{
+    width: 75%;
+    border-radius: 10px;
+    background-color: lightblue;
+}
+
+.income-type-buttons-container{
+    display: flex;
+    width: 100%;
+}
+
+.recurring-income-button{
+    flex-grow: 1;
+    border-bottom-left-radius: 10px;
+}
+.onetime-income-button{
+    flex-grow: 1;
+    border-bottom-right-radius: 10px;
+}
+
+.add-to-table-button{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.active-income-type{
+    background-color: var(--background-color-2);
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link  rel="stylesheet" href="../css/user-landing.css">
+
+</head>
+<body>
+
+    <nav class="nav-bar">
+        <div class="nav-logo-container">
+            <img src="../resources/Icon.svg" alt="Website Icon" class="logo-img">
+            <h1 class="nav-title">Wallet Watcher</h1>
+        </div>
+        <div class="nav-buttons">
+            
+            <button class="nav-button nav-user-btn" id="logoutButton">Log Out</button>
+            <button class="theme-changer" id="themeBtn">
+                <img src="../resources/ionicons/sunny.svg" id="changeIcon" data-theme="sunny" alt="☀️" class="change-icon"/>
+            </button>
+        </div>
+    </nav>
+
+    <section class="landing-section">
+        <h1 class="landing-title">Welcome Back <br><%= locals.name || "Back" %></h1>
+        
+        <div class="nav-cards-container">
+            <!-- <h1 class="options-title">Your Options</h1> -->
+            <button class="nav-card">
+                <h1 class="nav-card-title">Modify Income Streams</h1>
+                <img class="nav-card-icon" src="../resources/banking-icons/income-icon.jpg"/>
+            </button>
+            <button class="nav-card">
+                <h1 class="nav-card-title">Modify Expenses</h1>
+                <img class="nav-card-icon" src="../resources/banking-icons/expense-icon.jpg"/>
+            </button>
+            <button class="nav-card">
+                <h1 class="nav-card-title">View Account Balance</h1>
+                <img class="nav-card-icon" src="../resources/banking-icons/balance-icon.jpg"/>
+            </button>
+
+        </div>
+                <!--<img class="user-button-img" src="" alt="">-->
+
+    </section>
+
+</body>
+</html>
