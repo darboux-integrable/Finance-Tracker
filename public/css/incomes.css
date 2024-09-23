@@ -89,19 +89,30 @@
 }
 
 .recurring-income-button{
+    border: none;
+    height: 50px;
     flex-grow: 1;
     border-bottom-left-radius: 10px;
 }
 .onetime-income-button{
+    border: none;
+    height: 50px;
     flex-grow: 1;
     border-bottom-right-radius: 10px;
 }
 
 .add-to-table-button{
+    border-radius: 50px;
+    height: 40px;
+    width: 40%;
+    color: white;
+    background-color: var(--background-color-2);
     margin-top: 10px;
     margin-bottom: 10px;
+    font-size: 1rem;
 }
 
 .active-income-type{
     background-color: var(--background-color-2);
+    color: white;
 }
