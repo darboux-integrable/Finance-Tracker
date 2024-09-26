@@ -8,7 +8,10 @@ window.onload = () => {
 
 let t = document.getElementById("loginButton");
 t.addEventListener("click", () => {
-    alert("working");
+
+    location.replace("http://localhost:3000/users/0001/landing")
+
+
 })
 
 

@@ -24,27 +24,43 @@
 
     --blue-waves-delay: 100ms;
 }
+
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+.incomes-title{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-family: "Arial Black";
+}
+
 .incomes-wrapper{
     margin-left: auto;
     margin-right: auto;
     width: 75%;
     display: grid;
+    flex-grow: 1;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
 }
 
-.create-income-container {
+.create-income-container, .display-income-container{
     width: 75%;
     border-radius: 10px;
     display: flex;
-    height: auto;
+    height: 500px;
     flex-direction: column;
+    padding-inline: 10px;
+    margin-bottom: 20px;
     align-items: center;
     position: relative;
     background-color: var(--page-bg-color);
 }
 
-.create-income-container::after{
+.create-income-container::after, .display-income-container::after{
     --border-width: 15px;
     content: "";
     position: absolute;
@@ -56,63 +72,65 @@
     left: calc(var(--border-width) / 2 * -1);
 
     border-radius: 15px;
-    background-color: var(--background-color-3);
+    background-image: linear-gradient(45deg, var(--background-color-3), var(--background-color-4));
+
 }
 
-.create-recurring-income-container, .create-onetime-income-container{
-    display: flex;
-    padding-inline: 10px;
+.display-income-container::after{
+
+    background-image: linear-gradient(-45deg, var(--background-color-3), var(--background-color-4));
+
+
 }
 
-.data-collector-labels{
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-}
-
-.data-collector-inputs{
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-    margin-left: 10px;
-}
-
-.display-income-container{
-    width: 75%;
-    border-radius: 10px;
-    background-color: lightblue;
-}
-
-.income-type-buttons-container{
-    display: flex;
+.inputs-title{
+    background-image: linear-gradient(45deg, var(--background-color-2), var(--background-color-4));
+    background-repeat: no-repeat;
+    background-size: 100% 3px;
+    background-position: 0px 100%;
     width: 100%;
+    text-align: center;
+    font-family: "Arial Black";
 }
 
-.recurring-income-button{
-    border: none;
-    height: 50px;
-    flex-grow: 1;
-    border-bottom-left-radius: 10px;
-}
-.onetime-income-button{
-    border: none;
-    height: 50px;
-    flex-grow: 1;
-    border-bottom-right-radius: 10px;
+.incomes-input-container{
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
 }
 
-.add-to-table-button{
-    border-radius: 50px;
-    height: 40px;
-    width: 40%;
+.data-collector-labels, .data-collector-inputs{
+
+    display: grid;
+    gap: 20px;
+
+}
+
+.data-buttons{
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+    left: 0;
+}
+
+.data-buttons > button{
+
+    height: 45px;
+    width: 120px;
+    border-radius: 10px;
     color: white;
+    font-size: large;
+    cursor: pointer;
     background-color: var(--background-color-2);
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 1rem;
+    border: 2px solid var(--background-color-3);
+    transition: 200ms ease-in-out transform;
+
 }
 
-.active-income-type{
-    background-color: var(--background-color-2);
-    color: white;
+.data-buttons > button:hover{
+    transform: scale(1.1);
 }

@@ -12,7 +12,7 @@
   "description": "",
   "dependencies": {
     "ejs": "^3.1.10",
-    "express": "^4.19.2",
+    "express": "^4.21.0",
     "nodemon": "^3.1.7",
     "tabulator-tables": "^6.2.5"
   }

@@ -240,7 +240,7 @@ body{
     left: 0;
 }
 
-.top-blue-wave::before, .purple-top-wave::before{
+.top-blue-wave::before{
     content: '';
     position: absolute;
     width: 100%;
@@ -363,6 +363,45 @@ body{
     z-index: 5;
 }
 
+/* How to Use */
+
+.how-to-use-section{
+
+    margin-left: 30px;
+    padding-top: 30px;
+    padding-bottom: 50px;
+
+}
+
+.how-to-use-text{
+
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.how-to-use-text > strong{
+    font-family: "Nerko One", cursive;
+    font-size: xx-large;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0px;
+}
+
+.how-to-use-title{
+    font-size: 3rem;
+    font-family: "Nerko One", cursive;
+    font-weight: 400;
+    font-style: normal;
+
+    margin: 0px;
+}
+
+.how-to-use-text{
+    width: 65ch;
+}
+
+
 /* Download */
 
 .top-purple-waves-container{
@@ -379,9 +418,14 @@ body{
     opacity: 0;
 }
 
-.purple-wave5{
+.purple-wave-5{
     position: relative;
-    z-index: 5;
+    z-index: 10;
+}
+
+.purple-wave1{
+    position: relative !important;
+    z-index: -1;
 }
 
 .purple-wave1::before{
@@ -439,11 +483,17 @@ body{
     width: 300px;
     height: 100px;
     display: flex;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    border: hsl(245, 37%, 24%) 2px solid;
 }
 
 .download-button-canvas{
     position: relative;
     width: 100%;
+    background-color: rgba(0,0,0,0.2);
+    cursor: pointer;
     height: 100%;
 }
 
@@ -452,7 +502,11 @@ body{
     background-color: transparent;
     top: 0;
     left: 0;
+    cursor: pointer;
     width: 100%;
+    color: white;
+    border: none;
+    font-size: 2rem;
     height: 100%;
 }
 

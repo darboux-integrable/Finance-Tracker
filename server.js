@@ -17,16 +17,16 @@ app.get("/", (req, res) => {
 })
 
 app.get("/login", (req, res) => {
-    res.render("users/login")
+    res.send("Working");
 })
-
-app.get("/users/landing", (req, res) => {
-    res.render("users/landing", {name: "Your Father "});
-});
 
 app.get("/users/:id", (req, res) => {
     res.send("working");
 })
+
+app.get("/users/:id/landing", (req, res) => {
+    res.render("users/landing", {name: "Your Father "});
+});
 
 app.get("/users/:id/incomes", (req, res) => {
     res.render("users/incomes");
