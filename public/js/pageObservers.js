@@ -13,6 +13,13 @@ const blueWavesObserver = new IntersectionObserver((entries) => {
         if(entry.isIntersecting){
 
             wave.firstChild.src = wave.getAttribute("data-src");
+            wave.firstChild.onload = () => {
+                let bigPurpleWave = document.getElementById("bigPurpleWave");
+                let topPurpleWaveContainer = document.getElementById("topPurpleWaveContainer");
+                
+                topPurpleWaveContainer.style.height = bigPurpleWave.getBoundingClientRect().height + "px";
+                console.log(topPurpleWaveContainer, bigPurpleWave.getBoundingClientRect().height);
+            }
             // Check if the wave is a top wave or a bottom wave. 
             if(wave.classList.contains("top-blue-wave")){
 
@@ -29,7 +36,7 @@ const blueWavesObserver = new IntersectionObserver((entries) => {
             } else if (wave.classList.contains("purple-top-wave")){
                 wave.style.animation = `250ms ease-in-out calc(var(--blue-waves-delay) * ${entries.indexOf(entry)}) fade-in forwards,
                                         250ms ease-in-out calc(var(--blue-waves-delay) * ${entries.indexOf(entry)}) blue-wave-translate-up forwards`;
-
+                
             }
 
             blueWavesObserver.unobserve(wave);

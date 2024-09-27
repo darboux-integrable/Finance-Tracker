@@ -404,11 +404,12 @@ body{
 
 /* Download */
 
+/* ///////////////////////// */
+/* DONT TOUCH IT!!! IT WORKS */
+/* ///////////////////////// */
 .top-purple-waves-container{
     position: relative;
-    margin-top: 134.74px;
 }
-
 
 .purple-top-wave{
     position: absolute;
@@ -416,17 +417,28 @@ body{
     bottom: 0;
     left: 0;
     opacity: 0;
+    z-index: 1;
 }
 
 .purple-wave-5{
-    position: relative;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    opacity: 1 !important;
     z-index: 10;
 }
 
-.purple-wave1{
-    position: relative !important;
-    z-index: -1;
+.purple-wave2{
+    z-index: 3;
 }
+.purple-wave3{
+    z-index: 4;
+}
+.purple-wave4{
+    z-index: 5;
+}
+/*  */
 
 .purple-wave1::before{
     background-color: var(--wave-color-6);
@@ -439,9 +451,6 @@ body{
 }
 .purple-wave4::before{
     background-color: var(--wave-color-9);
-}
-.purple-wave5::before{
-    background-color: var(--wave-color-10);
 }
 
 .about-download-img{
@@ -507,6 +516,7 @@ body{
     color: white;
     border: none;
     font-size: 2rem;
+    z-index: 10;
     height: 100%;
 }
 

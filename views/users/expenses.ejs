@@ -1,27 +1,72 @@
-<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Expenses</title>
+    <title>Incomes</title>
     <link type="text/css" rel="stylesheet" href="../../css/nav.css">
-
+    <link type="text/css" rel="stylesheet" href="../../css/incomes.css">
+    <link href="https://unpkg.com/tabulator-tables@6.2.5/dist/css/tabulator.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@6.2.5/dist/js/tabulator.min.js"></script>
+    <script type="module" src="../../js/incomesTable.js" defer></script>
 </head>
 <body>
-<nav class="nav-bar">
-    <div class="nav-logo-container">
-        <img src="../../resources/Icon.svg" alt="Website Icon" class="logo-img">
-        <h1 class="nav-title">Wallet Watcher</h1>
+    <nav class="nav-bar">
+        <div class="nav-logo-container">
+            <img src="../../resources/Icon.svg" alt="Website Icon" class="logo-img">
+            <h1 class="nav-title">Wallet Watcher</h1>
+        </div>
+        <div class="nav-buttons">
+            <button class="nav-button nav-user-btn" id="loginButton">Log Out</button>
+            <button class="theme-changer" id="themeBtn">
+                <img src="../../resources/ionicons/sunny.svg" id="changeIcon" data-theme="sunny" alt="☀️" class="change-icon"/>
+            </button>
+        </div>
+    </nav>
+
+    <h1 class="incomes-title">Enter Various Expenses</h1>
+
+    <div class="incomes-wrapper">
+        <div class="create-income-container">
+            <h1 class="inputs-title">Expenses Input</h1>
+
+            <form class="incomes-input-container">
+                <div class="data-collector-labels">
+                    <label class="data-collector-name" for="recurringIncomeLabelInput">Label: </label>
+                    <label class="data-collector-name" for="recurringIncomeTimeInput">Recurring Times:</label>
+                    <label class="data-collector-name" for="incomeAmountInput">Amount: $</label>
+                </div>
+
+                <div class="data-collector-inputs">
+                    <input id="recurringIncomeLabelInput" type="text" placeholder="Enter a label..." required/>
+
+                    <select id="recurringIncomeTimeInput" required>
+                        <option value="Annually">Annually</option>
+                        <option value="Biannually">Biannually</option>
+                        <option value="Quarterly">Quarterly</option>
+                        <option value="Monthly">Monthly</option>
+                        <option value="Biweekly">Biweekly</option>
+                        <option value="Weekly">Weekly</option>
+                        <option value="Daily">Daily</option>
+                        <option value="Onetime">Onetime</option>
+                    </select>
+
+                    <input id="incomeAmountInput" type="number" step="0.01" min="0.01" max="1000000000" placeholder="Enter an amount..." required/>
+                </div>
+
+                <div class="data-buttons">
+                    <input type="submit" class="add-to-table-button" value="Add to Table"/>
+                    <button class="clear-data-button">Delete Data</button>
+                </div>
+            </form>
+
+        </div>
+
+        <div class="display-income-container">
+
+            <div id="incomeDisplayTable"></div>
+        </div>
+
     </div>
-    <div class="nav-buttons">
-        <button class="nav-button nav-user-btn" id="loginButton">Log Out</button>
-        <button class="theme-changer" id="themeBtn">
-            <img src="../../resources/ionicons/sunny.svg" id="changeIcon" data-theme="sunny" alt="☀️" class="change-icon"/>
-        </button>
-    </div>
-</nav>
+
 
 </body>
 </html>

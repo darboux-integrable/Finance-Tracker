@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
     <link  rel="stylesheet" href="../../css/user-landing.css">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -24,10 +26,71 @@
     </nav>
 
     <section class="landing-section">
-        <h1 class="landing-title">Welcome Back <br><%= locals.name || "Back" %></h1>
+        <h1 class="landing-title">Welcome Back <br><%= locals.name || "User" %></h1>
         
-        <div class="nav-cards-container">
-            <!-- <h1 class="options-title">Your Options</h1> -->
+        <div class="cards">
+            <div class="card card-1">
+    
+                <div class="card-title"><h3>Modify Income Streams</h3></div>
+                <div class="card-middle-background">
+                    <img class="card-img" src="../../resources/banking-icons/piggy-bank.svg" alt="">
+                    <button class="view-button view-button-1" id="incomesButton"></button>
+                </div>
+                
+                <div class="card-bottom card-bottom-1">
+
+                    Here you can view you current income streams. 
+
+                    <br>
+                    <br>
+
+                    You can add and view new income streams here that will contribute to your net. Enter incomes that will occur after a certain amount of time; i.e. monthly, weekly, etc...
+
+                
+                </div>
+            </div>
+    
+            <div class="card card-2">
+    
+                <div class="card-title">
+                    <h3>Modify Expenses</h3>
+                </div>
+                <div class="card-middle-background">
+                    <img class="card-img" src="../../resources/banking-icons/money.svg" alt="">
+                    <button class="view-button view-button-2" id="expensesButton"></button>
+                </div>
+                
+                <div class="card-bottom card-bottom-2">
+                    Here you can modify your expenses. 
+
+                    <br>
+                    <br>
+
+                    You can add and view new and old expenses that contribute to your net. Expenses can be entered in over differnet time intervals like monthly, weekly, etc... 
+                </div>
+            </div>
+    
+            <div class="card card-3">
+    
+                <div class="card-title"><h3>View Account Balance</h3></div>
+                <div class="card-middle-background">
+                    <img class="card-img" src="../../resources/banking-icons/bank.svg" alt="">
+                    <button class="view-button view-button-3" id="balanceButton"></button>
+                </div>
+                
+                <div class="card-bottom card-bottom-3">
+                    Here you can view your balances and net.
+                    <br>
+                    <br>
+                    Create new balances for different things you may need like car, phone, bills,  etc... 
+                    <br>
+                    <br>
+                    View your net income that takes into account all your incomes and expenses. 
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="nav-cards-container">
             <button class="nav-card">
                 <h1 class="nav-card-title">Modify Income Streams</h1>
                 <img class="nav-card-icon" src="../../resources/banking-icons/income-icon.jpg"/>
@@ -41,10 +104,22 @@
                 <img class="nav-card-icon" src="../../resources/banking-icons/balance-icon.jpg"/>
             </button>
 
-        </div>
+        </div> -->
                 <!--<img class="user-button-img" src="" alt="">-->
 
     </section>
+
+    <script>
+
+        const incomesButton = document.getElementById("incomesButton");
+        const expensesButton = document.getElementById("expensesButton");
+        const balanceButton = document.getElementById("balanceButton");
+
+        incomesButton.addEventListener("click", () => location.replace("/users/0001/incomes"));
+        expensesButton.addEventListener("click", () => location.replace("/users/0001/expenses"));
+        balanceButton.addEventListener("click", () => location.replace("/users/0001/balances"));
+
+    </script>
 
 </body>
 </html>

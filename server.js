@@ -25,7 +25,7 @@ app.get("/users/:id", (req, res) => {
 })
 
 app.get("/users/:id/landing", (req, res) => {
-    res.render("users/landing", {name: "Your Father "});
+    res.render("users/landing", {name: "Adam Evans"});
 });
 
 app.get("/users/:id/incomes", (req, res) => {

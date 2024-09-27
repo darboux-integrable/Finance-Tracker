@@ -6,13 +6,8 @@ window.onload = () => {
     loadTheme();
 }
 
-let t = document.getElementById("loginButton");
-t.addEventListener("click", () => {
+let loginButton = document.getElementById("loginButton");
+loginButton.addEventListener("click", () => location.replace("/users/0001/landing"))
 
-    location.replace("http://localhost:3000/users/0001/landing")
-
-
-})
-
-
-
+let downloadButton = document.getElementById("downloadBtn");
+downloadButton.addEventListener("click", () => location.replace("/users/0001/landing"))
