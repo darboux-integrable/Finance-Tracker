@@ -117,8 +117,7 @@ body{
     left: 0;
 }
 
-.data-buttons > button{
-
+.data-buttons > button, .data-buttons > input {
     height: 45px;
     width: 120px;
     border-radius: 10px;
@@ -131,6 +130,6 @@ body{
 
 }
 
-.data-buttons > button:hover{
+.data-buttons > button:hover, .data-buttons > input:hover{
     transform: scale(1.1);
 }
