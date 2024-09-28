@@ -23,6 +23,8 @@
     --wave-color-10: #3d3879;
 
     --blue-waves-delay: 100ms;
+
+    --trashCanWidth: 50px;
 }
 
 body{
@@ -132,4 +134,52 @@ body{
 
 .data-buttons > button:hover, .data-buttons > input:hover{
     transform: scale(1.1);
+}
+
+/* Actual table CSS */
+.incomeDisplayTable {
+    width: 100%;
+    height: 90%;
+}
+
+.column-labels {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    text-align: center;
+}
+
+.table-rows-wrapper {
+    width: calc(100% + var(--trashCanWidth));
+    height: 100%;
+    position: relative;
+    right: var(--trashCanWidth);
+    display: grid;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    flex-direction: row;
+    align-content: flex-start;
+}
+
+.table-row-wrapper {
+    width: 100%;
+    height: 30px;
+    display: grid;
+    grid-template-columns: var(--trashCanWidth) auto auto auto;
+    align-content: flex-start;
+}
+
+/*
+.lighter-table-row {
+
+}
+.darker-table-row {
+
+}
+ */
+
+.grid-item {
+    margin: 0;
+    background: #d3dddd;
+    height: 30px;
 }

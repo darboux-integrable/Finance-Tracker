@@ -4,8 +4,6 @@
     <title>Incomes</title>
     <link type="text/css" rel="stylesheet" href="../../css/nav.css">
     <link type="text/css" rel="stylesheet" href="../../css/incomes.css">
-    <link href="https://unpkg.com/tabulator-tables@6.2.5/dist/css/tabulator.min.css" rel="stylesheet">
-    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@6.2.5/dist/js/tabulator.min.js"></script>
     <script type="module" src="../../js/incomesTable.js" defer></script>
 </head>
 <body>
@@ -28,7 +26,7 @@
         <div class="create-income-container">
             <h1 class="inputs-title">Incomes Input</h1>
 
-            <form class="incomes-input-container">
+            <form class="incomes-input-container" id="incomeInputForm">
                 <div class="data-collector-labels">
                     <label class="data-collector-name" for="recurringIncomeLabelInput">Label: </label>
                     <label class="data-collector-name" for="recurringIncomeTimeInput">Recurring Times:</label>
@@ -36,9 +34,9 @@
                 </div>
 
                 <div class="data-collector-inputs">
-                    <input id="recurringIncomeLabelInput" type="text" placeholder="Enter a label..." required/>
+                    <input id="incomeLabelInput" type="text" placeholder="Enter a label..." required/>
 
-                    <select id="recurringIncomeTimeInput" required>
+                    <select class="incomeTypeInputDropdown" id="incomeTypeInput" required>
                         <option value="Annually">Annually</option>
                         <option value="Biannually">Biannually</option>
                         <option value="Quarterly">Quarterly</option>
@@ -62,7 +60,19 @@
 
         <div class="display-income-container">
 
-            <div id="incomeDisplayTable"></div>
+
+                <div class="incomeDisplayTable">
+
+                    <div class="column-labels">
+                        <div class="grid-item">Type</div>
+                        <div class="grid-item">Label</div>
+                        <div class="grid-item">Amount</div>
+                    </div>
+
+                    <!--Holds grid elements, each grid inside is a separate row -->
+                    <div id="tableRowsWrapper" class="table-rows-wrapper"></div>
+                </div>
+
         </div>
 
     </div>
