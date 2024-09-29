@@ -3,8 +3,12 @@ const {readFile} = require('fs');
 const path = require('path');
 const app = express();
 
+const bcrypt = require('bcrypt');
+const mongoose = require('mongoose');
+
 app.set("view engine", "ejs");
 
+app.use(express.json());
 app.use(express.static('public'));
 app.use(express.static('public/js'));
 
@@ -41,5 +45,15 @@ app.get("/users/:id/balances", (req, res) => {
     res.render("users/balances");
 })
 
-app.listen(3000, () => {console.log("Server started on port 3000: http//:localhost:3000")});
+mongoose.connect("mongodb+srv://adamevanswork1:Ujthnje8@backenddb.jw0vt.mongodb.net/Node-API?retryWrites=true&w=majority&appName=BackendDB")
+    .then(() => {
+        console.log("Connected to the database");
+        app.listen(3000, () => {
+            console.log("Listing on port 3000")
+        })
+    })
+    .catch(err => {
+        console.log("Unable to connect to the database");
+        console.log(err)
+    })
 

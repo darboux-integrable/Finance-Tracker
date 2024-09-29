@@ -52,7 +52,7 @@
 
                 <div class="data-buttons">
                     <input type="submit" class="add-to-table-button" value="Add to Table"/>
-                    <button class="clear-data-button">Delete Data</button>
+                    <button type="button" class="clear-data-button">Delete Data</button>
                 </div>
             </form>
 
@@ -70,7 +70,10 @@
                     </div>
 
                     <!--Holds grid elements, each grid inside is a separate row -->
-                    <div id="tableRowsWrapper" class="table-rows-wrapper"></div>
+                    <div class="front-back-table-wrapper">
+                        <div id="tableRowsBackgroundWrapper" class="table-rows-background-wrapper"></div>
+                        <div id="tableRowsWrapper" class="table-rows-wrapper"></div>
+                    </div>
                 </div>
 
         </div>

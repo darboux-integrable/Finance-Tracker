@@ -18,7 +18,6 @@ const blueWavesObserver = new IntersectionObserver((entries) => {
                 let topPurpleWaveContainer = document.getElementById("topPurpleWaveContainer");
                 
                 topPurpleWaveContainer.style.height = bigPurpleWave.getBoundingClientRect().height + "px";
-                console.log(topPurpleWaveContainer, bigPurpleWave.getBoundingClientRect().height);
             }
             // Check if the wave is a top wave or a bottom wave. 
             if(wave.classList.contains("top-blue-wave")){

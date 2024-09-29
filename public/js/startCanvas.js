@@ -6,8 +6,8 @@ canvas.height = canvasStats.height;
 let ctx = canvas.getContext('2d');
 
 let mouse = {
-    x: undefined,
-    y: undefined,
+    x: 0,
+    y: 0,
 }
 
 
@@ -40,22 +40,49 @@ class gradientCircle{
     }
 
     setCoordinates(newX, newY){
-        this.x = newX;
-        this.y = newY;
+        console.log(this.x + " circle x");
+        console.log(mouse.x+" mouse x");
+        const angle = Math.atan2(this.y - newY, this.x - newX);
+        const distance = Math.sqrt(Math.pow(this.x - newX, 2) + Math.pow(this.y - newY, 2));
+        this.x -= Math.cos(angle) * (distance / 25);
+        this.y -= Math.sin(angle) * (distance / 25);
+    }
+
+    updateRadius(mouseX, mouseY){
+        this.r2 = 150-Math.sqrt(Math.pow(this.x - mouseX, 2) + Math.pow(this.y - mouseY, 2))*2;
     }
 }
+
+
 
 let circle = new gradientCircle(mouse.x, mouse.y, 1, 300, ["rgba(255,255,255,0.35)", "rgba(255,255,255,0.1)", "transparent"]);
 
 const downloadButton = document.getElementById("downloadBtn");
 
+circle.setCoordinates(0, 0);
+
 downloadButton.addEventListener("mousemove", (e) => {
     ctx.clearRect(0,0,canvas.width, canvas.height);
     canvasStats = canvas.getBoundingClientRect();
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-    circle.setCoordinates(mouse.x - canvasStats.x, mouse.y - canvasStats.y );
+    mouse.x = e.clientX- canvasStats.x;
+    mouse.y = e.clientY- canvasStats.y;
+    for(let i = 0; i < 10; i++){
+        setTimeout(animate, i * 200);
+    }
 
+
+    console.log(circle.r2);
     circle.draw(ctx);
 
-})
+});
+
+function animate(){
+    circle.setCoordinates(mouse.x , mouse.y);
+    circle.updateRadius(mouse.x, mouse.y);
+}
+
+downloadButton.addEventListener("mouseleave", (e) => {
+    setTimeout(function(){
+        circle.r2 = 0;
+    }, 1000);
+});
