@@ -1,0 +1,64 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Sign Up</title>
+  <link type="text/css" rel="stylesheet" href="../../css/sign-up.css" />
+  <link type="text/css" rel="stylesheet" href="../../css/nav.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet" />
+
+  <script defer src="../../js/signUp.js"></script>
+</head>
+
+<body>
+  <nav class="nav-bar">
+    <div class="nav-logo-container">
+      <img src="../../resources/Icon.svg" alt="Website Icon" class="logo-img" />
+      <h1 class="nav-title">Wallet Watcher</h1>
+    </div>
+    <div class="nav-buttons">
+      <button class="theme-changer" id="themeBtn">
+        <img src="../../resources/ionicons/sunny.svg" id="changeIcon" data-theme="sunny" alt="☀️" class="change-icon" />
+      </button>
+    </div>
+  </nav>
+
+  <div class="content">
+    <main class="sign-up-container">
+      <h1 class="sign-up-title">Sign Up</h1>
+      <div class="user-inputs-container">
+        <div class="name-input-container">
+          <input placeholder="Enter Your First Name" type="text" name="first name" id="firstNameInput"
+            class="first-name-input" />
+          <input placeholder="Enter Your Last Name" type="text" name="last name" id="lastNameInput"
+            class="last-name-input" />
+        </div>
+        <input placeholder="Enter Your Email" type="email" name="Email Input Box" id="emailInput" class="email-input" />
+        <div class="password-input-container">
+          <p class="password-title">Password:</p>
+          <input type="text" class="password-input" id="passwordInput" name="password input"
+            placeholder="Enter Your Password" />
+          <input type="text" class="confirm-input" id="confirmPasswordInput" name="confirm password input"
+            placeholder="Confirm Your Password" />
+        </div>
+      </div>
+
+      <p class="error-text" id="errorText">
+        There is already an account with that email.
+      </p>
+
+      <div class="sign-up-button-container">
+        <button id="signUpButton" class="sign-up-button">Sign Up</button>
+      </div>
+
+      <div class="login-container">
+        <p>Already have an account?</p>
+        <button class="login-button" id="loginButton">Log In</button>
+      </div>
+    </main>
+  </div>
+</body>
+
+</html>

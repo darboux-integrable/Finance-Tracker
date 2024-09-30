@@ -66,7 +66,9 @@ function newDataPoints() {
             dataset.data.shift();
         }
 
+        // Variable that is not used anyhere but the empty conditional 
         let dataSetLastVal = dataset.data[dataset.data.length-1];
+
         // Tyler buddy, what is the empty if and if else statements? 
         if(dataSetLastVal >= 10){
 
@@ -76,7 +78,6 @@ function newDataPoints() {
 
         dataset.data.push(dataset.data[dataset.data.length-1]+(Math.floor(Math.random() * 50)-25)); // Random datapoint for each line
 
-        // Hi Tyler! Just asking, does this make sure the last added element is 100 if it was over 100 and 0 if it was under zero?
         if(dataset.data[dataset.data.length-1] > 100) {
             dataset.data[dataset.data.length-1] = 100;
         }

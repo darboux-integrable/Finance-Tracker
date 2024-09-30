@@ -3,8 +3,18 @@ const mongoose = require('mongoose');
 const userSchema = mongoose.Schema(
     {
 
-        name: {
-            username: String,
+        firstName: {
+            type: String,
+            required: true
+        },
+
+        lastName: {
+            type: String,
+            required: true
+        },
+
+        email: {
+            type: String,
             required: true
         },
 
@@ -15,19 +25,19 @@ const userSchema = mongoose.Schema(
 
         incomes: {
             type: Array,
-            required: false,
+            required: true,
             default: []
         },
 
         expenses: {
             type: Array,
-            required: false,
+            required: true,
             default: []
         },
 
-        budgets: {
+        balances: {
             type: Array,
-            required: false,
+            required: true,
             default: []
         }
     }

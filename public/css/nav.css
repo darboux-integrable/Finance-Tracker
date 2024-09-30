@@ -35,7 +35,7 @@ body{
 
 /* Navigation Bar Styles */
 .nav-bar{
-    position: sticky;
+    position: static;
     top: 0px;
     display: flex;
     justify-content: space-between;
