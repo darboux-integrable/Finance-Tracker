@@ -2,7 +2,6 @@
 // .then(res => res.json())
 // .then(data => console.log(data));
 
-
 const firstNameInput = document.getElementById("firstNameInput");
 const lastNameInput = document.getElementById("lastNameInput");
 const emailInput = document.getElementById("emailInput");
@@ -22,7 +21,9 @@ const loginButton = document.getElementById("loginButton");
 
 const errorText = document.getElementById("errorText");
 
-signUpButton.addEventListener("click", () => {
+const SESSION_USER_KEY = "session.user.key";
+
+signUpButton.addEventListener("click", async () => {
 
     let areInputsFilled = true;
 
@@ -46,14 +47,8 @@ signUpButton.addEventListener("click", () => {
 
     errorText.style.opacity = "0";
     // If this code executes, that means that there was no error in the data that the user entered
-    
-    
-    
-    fetch("/sign-up/adamtomas@gmail.com")
-    .then(res => res.json())
-    .then(data => console.log(data));
 
-    fetch("/sign-up/adamtomasevans1212@gmail.com", {
+    fetch("/sign-up/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -69,23 +64,11 @@ signUpButton.addEventListener("click", () => {
         })
     })
     .then(res => res.json())
-    .then(data => console.log(data));
-
-
-    // fetch(`/sign-up/${emailInput.value}`, {
-    //     method: "POST",
-    //     body: JSON.stringify({
-    //         firstName: firstNameInput.value,
-    //         lastName: lastNameInput.value,
-    //         password: passwordInput.value,
-    //         email: emailInput.value,
-    //         incomes: [],
-    //         expenses: [],
-    //         balances: [],
-    //     })
-    // })
-    // .then(res => res.json())
-
+    .then(data => {
+        const id = data._id;
+        sessionStorage.setItem(SESSION_USER_KEY, JSON.stringify(data));
+        location.replace("/users/" + id + "/landing");
+    });
 
 })
 

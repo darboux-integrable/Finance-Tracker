@@ -29,55 +29,43 @@ app.get("/sign-up", (req, res) => {
     res.render("users/signUp");
 })
 
-app.get("/sign-up/:email", async (req, res) => {
-    
+app.get("/users/:id/landing", async (req, res) => {
+
     try {
-        const { email } = req.params;
-        const users = await User.find({"email": email});
+        const { id } = req.params;
+        const user = await User.findById(id);   
         
-        res.status(200).json(users);
+        res.status(200).render("users/landing", {name: user.firstName + " " + user.lastName});
+
+    } catch (error) {
+        res.status(404).json({message: "User could not be found"});
+    }
+
+})
+
+app.post("/sign-up", async (req, res) => {
+    try {
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+        const userParams = {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            password: hashedPassword,
+            incomes: req.body.incomes,
+            expenses: req.body.expenses, 
+            balances: req.body.balances
+        };
+
+        const user = await User.create(userParams);
+
+        res.status(201).json(user);
 
     } catch (error) {
         
     }
 
-    res.status(200).json({message: "The test is working"})
-
 })
-
-app.post("/sign-up/:email", async (req, res) => {
-
-    try {
-
-        const user = await User.create(req.body);
-        
-        res.status(200).json(user);
-    } catch (error) {
-        
-    }
-
-})
-
-// app.get("/users/:id", (req, res) => {
-//     res.send("working");
-// })
-
-// app.get("/users/:id/landing", (req, res) => {
-//     res.render("users/landing", {name: "Adam Evans"});
-// });
-
-// app.get("/users/:id/incomes", (req, res) => {
-//     res.render("users/incomes");
-// })
-
-// app.get("/users/:id/expenses", (req, res) => {
-//     res.render("users/expenses");
-
-// })
-
-// app.get("/users/:id/balances", (req, res) => {
-//     res.render("users/balances");
-// })
 
 mongoose.connect("mongodb+srv://adamevanswork1:Ujthnje8@backenddb.jw0vt.mongodb.net/Node-API?retryWrites=true&w=majority&appName=BackendDB")
     .then(() => {
