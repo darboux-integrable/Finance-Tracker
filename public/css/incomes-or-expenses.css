@@ -32,14 +32,14 @@ body{
     flex-direction: column;
 }
 
-.incomes-title{
+.page-title{
     text-align: center;
     margin-top: 10px;
     margin-bottom: 30px;
     font-family: "Arial Black";
 }
 
-.incomes-wrapper{
+.content-wrapper{
     margin-left: auto;
     margin-right: auto;
     width: 75%;
@@ -49,20 +49,19 @@ body{
     justify-items: center;
 }
 
-.create-income-container, .display-income-container{
+.create-income-or-expense-container, .display-income-or-expense-container{
     width: 75%;
     border-radius: 10px;
     display: flex;
     height: 500px;
     flex-direction: column;
-    padding-inline: 10px;
     margin-bottom: 20px;
     align-items: center;
     position: relative;
     background-color: var(--page-bg-color);
 }
 
-.create-income-container::after, .display-income-container::after{
+.create-income-or-expense-container::after, .display-income-or-expense-container::after{
     --border-width: 15px;
     content: "";
     position: absolute;
@@ -78,7 +77,7 @@ body{
 
 }
 
-.display-income-container::after{
+.display-income-or-expense-container::after{
 
     background-image: linear-gradient(-45deg, var(--background-color-3), var(--background-color-4));
 
@@ -95,7 +94,7 @@ body{
     font-family: "Arial Black";
 }
 
-.incomes-input-container{
+.input-container{
 
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -136,71 +135,101 @@ body{
     transform: scale(1.1);
 }
 
-/* Actual table CSS */
-.incomeDisplayTable {
-    width: 100%;
-    height: 90%;
-}
+/* Adam's Table CSS */
 
-.column-labels {
-    width: 100%;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    text-align: center;
-}
-
-.table-rows-wrapper {
-    width: calc(100% + var(--trashCanWidth));
-    height: 100%;
-    position: relative;
-    right: var(--trashCanWidth);
-    display: grid;
-    overflow-y: scroll;
+.table{
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
     overflow-x: hidden;
-    flex-direction: row;
-    align-content: flex-start;
-}
-
-.table-row-wrapper {
     width: 100%;
-    height: 30px;
-    display: grid;
-    grid-template-columns: var(--trashCanWidth) auto auto auto;
-    align-content: flex-start;
+    align-items: center;
 }
 
-.front-back-table-wrapper {
+.table-item{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    padding: 10px;
+    animation: item-slide-in 250ms ease-out forwards;
+}
+
+.item-head{
+    display: flex;
+    justify-content: space-between;
+}
+
+.item-title-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    width: 50%;
+    border-radius: 5px;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+    transition: 250ms background-color;
 
 }
 
-.table-rows-background-wrapper {
-    position: absolute;
-    width: calc(100%);
-    height: 30px;
-    display: grid;
-    grid-template-columns: auto;
-    align-content: flex-start;
+.item-component{
+   padding: 0px;
+   margin-bottom: 0px;
+   margin-top: 0px;
+   margin-left: 10px;
+   font-family: "Open Sans", sans-serif;
 }
 
-.table-row-background {
-    height: 30px;
-}
-.lighter-table-row {
-    background-color: var(--wave-color-2);
-}
-.darker-table-row {
-    background-color: var(--wave-color-3);
-}
-
-
-.column-labels > .grid-item {
-    background: var(--wave-color-4);
-    border: 1px solid var(--background-color-3);
+.delete-table-item{
+    background-color: #BB2124;
     color: white;
+    border: none;
+    padding-inline: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 150ms;
 }
-.grid-item {
-    background: none;
-    border: 1px solid var(--background-color-3);;
-    margin: 0;
-    height: 30px;
+
+.delete-table-item:hover{
+    transform: scale(1.05);
+}
+
+.light-table-item{
+    background-color: color-mix(in srgb, var(--wave-color-2), transparent 50%);
+}
+.dark-table-item {
+    background-color: color-mix(in srgb, var(--wave-color-3), transparent 30%);
+
+}
+
+@keyframes item-slide-in{
+
+    0%{
+        left: -50%;
+        opacity: 0;
+    }
+    100%{
+        left: 0px;
+        opacity: 1;
+    }
+
+}
+
+@keyframes item-slide-out{
+
+    0%{
+        left: 0px;
+        opacity: 1;
+    }
+    
+    100%{
+        left: 50%;
+        opacity: 0;
+    }
 }
