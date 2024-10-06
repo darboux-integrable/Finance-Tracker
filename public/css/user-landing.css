@@ -282,10 +282,6 @@ body{
     transition: width 150ms, height 150ms, top 150ms, left 150ms;
 }
 
-.card::after{
-    filter: blur(10px);
-}
-
 .card:hover::before{
     width: calc(100% + 2 * var(--border-size));
     height: calc(100% + 2 * var(--border-size));

@@ -25,22 +25,37 @@ app.get("/login", (req, res) => {
     res.render("users/login");
 })
 
+app.post("/login", async (req, res) => {
+
+    try {
+        const email = req.body.email;
+        const users = await User.find({email: email});
+
+        if(users.length == 0){
+            res.status(404).json({message: "User not"});
+            return;
+        }
+
+        const user = users[0];
+
+        if(await bcrypt.compare(req.body.password, user.password)){
+            res.status(200).json(user);
+        } else {
+            res.status(404).json({message: "The password does not match"});
+        }
+
+    } catch (error) {
+        res.status(500).json({message: "Internal Server Error", error: error.toString()})
+    }
+
+})
+
 app.get("/sign-up", (req, res) => {
     res.render("users/signUp");
 })
 
 app.get("/users/:id/landing", async (req, res) => {
-
-    try {
-        const { id } = req.params;
-        const user = await User.findById(id);   
-        
-        res.status(200).render("users/landing", {name: user.firstName + " " + user.lastName});
-
-    } catch (error) {
-        res.status(404).json({message: "User could not be found"});
-    }
-
+    res.status(200).render("users/landing");
 })
 
 app.post("/sign-up", async (req, res) => {
@@ -65,6 +80,38 @@ app.post("/sign-up", async (req, res) => {
         
     }
 
+})
+
+app.get("/users/:id/incomes", (req, res) => {
+    res.render("users/incomesOrExpenses", {pageType: "Income"});
+})
+
+app.put("/users/:id/incomes", async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const updatedUser = await User.findByIdAndUpdate(id, req.body); 
+
+        if(!updatedUser){
+            res.status(404).json({message: "User was not found"})
+            return;
+        }
+
+        // Test to see if the user has been updated. 
+        //const user = await User.findById(id);
+        //console.log(updatedUser, user);
+
+    } catch (error) {
+        res.status(500).json({message: "Internal Server Error"});
+    }   
+})
+
+app.get("/users/:id/expenses", (req, res) => {
+    res.render("users/incomesOrExpenses", {pageType: "Expense"});
+})
+
+app.get("/users/:id/balances", (req, res) => {
+    res.render("users/balances");
 })
 
 mongoose.connect("mongodb+srv://adamevanswork1:Ujthnje8@backenddb.jw0vt.mongodb.net/Node-API?retryWrites=true&w=majority&appName=BackendDB")

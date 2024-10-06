@@ -1,78 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="../../css/nav.css">
-    <link rel="stylesheet" href="../../css/login.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link rel="stylesheet" href="../../css/nav.css" />
+  <link rel="stylesheet" href="../../css/login.css" />
+  <script defer src="../../js/login.js"></script>
 </head>
+
 <body>
-    <nav class="nav-bar">
-        <div class="nav-logo-container">
-          <img
-            src="../../resources/Icon.svg"
-            alt="Website Icon"
-            class="logo-img"
-          />
-          <h1 class="nav-title">Wallet Watcher</h1>
+  <nav class="nav-bar">
+    <div class="nav-logo-container">
+      <img src="../../resources/Icon.svg" alt="Website Icon" class="logo-img" />
+      <h1 class="nav-title">Wallet Watcher</h1>
+    </div>
+    <div class="nav-buttons">
+      <button class="theme-changer" id="themeBtn">
+        <img src="../../resources/ionicons/sunny.svg" id="changeIcon" data-theme="sunny" alt="☀️" class="change-icon" />
+      </button>
+    </div>
+  </nav>
+
+  <div class="content">
+    <main class="login-container">
+      <h1 class="login-title">Login</h1>
+      <p class="email-title">Email:</p>
+      <div class="user-inputs-container">
+        <input placeholder="Enter Your Email" type="email" name="Email Input Box" id="emailInput" class="email-input" />
+        <div class="password-input-container">
+          <p class="password-title">Password:</p>
+          <input type="text" class="password-input" id="passwordInput" name="password input"
+            placeholder="Enter Your Password" />
         </div>
-        <div class="nav-buttons">
-          <button class="theme-changer" id="themeBtn">
-            <img
-              src="../../resources/ionicons/sunny.svg"
-              id="changeIcon"
-              data-theme="sunny"
-              alt="☀️"
-              class="change-icon"
-            />
-          </button>
-        </div>
-      </nav>
-  
-      <div class="content">
-        <main class="login-container">
-          <h1 class="login-title">Login</h1>
-          <p class="email-title">Email:</p>
-          <div class="user-inputs-container">
-            <input
-              placeholder="Enter Your Email"
-              type="email"
-              name="Email Input Box"
-              id="emailInput"
-              class="email-input"
-            />
-            <div class="password-input-container">
-              <p class="password-title">Password:</p>
-              <input
-                type="text"
-                class="password-input"
-                id="passwordInput"
-                name="password input"
-                placeholder="Enter Your Password"
-              />
-          
-            </div>
-          </div>
-  
-          <div class="error-container">
-
-            <p class="error-text" id="errorText">
-                That email and password combination is not correct. Please change the email or password. 
-            </p>
-
-          </div>
-
-          <div class="login-button-container">
-            <button id="loginButton" class="login-button">Login</button>
-          </div>
-  
-          <div class="sign-up-container">
-            <p>Don't have an account?</p>
-            <button class="sign-up-button" id="signUpButton">Sign Up</button>
-          </div>
-        </main>
       </div>
 
+      <div class="error-container">
+        <p class="error-text" id="errorText">
+          That email and password combination is not correct. Please change
+          the email or password.
+        </p>
+      </div>
+
+      <div class="login-button-container">
+        <button id="loginButton" class="login-button">Login</button>
+      </div>
+
+      <div class="sign-up-container">
+        <p>Don't have an account?</p>
+        <button class="sign-up-button" id="signUpButton">Sign Up</button>
+      </div>
+    </main>
+  </div>
 </body>
+
 </html>

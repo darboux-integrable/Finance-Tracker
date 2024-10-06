@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+    <script defer src="../../js/userLanding.js"></script>
+
 </head>
 <body>
 
@@ -26,7 +28,7 @@
     </nav>
 
     <section class="landing-section">
-        <h1 class="landing-title">Welcome Back <br><%= locals.name || "User" %></h1>
+        <h1 class="landing-title" id="landingTitle">Welcome Back <br></h1>
         
         <div class="cards">
             <div class="card card-1">
@@ -108,18 +110,6 @@
                 <!--<img class="user-button-img" src="" alt="">-->
 
     </section>
-
-    <script>
-
-        const incomesButton = document.getElementById("incomesButton");
-        const expensesButton = document.getElementById("expensesButton");
-        const balanceButton = document.getElementById("balanceButton");
-
-        incomesButton.addEventListener("click", () => location.replace("/users/0001/incomes"));
-        expensesButton.addEventListener("click", () => location.replace("/users/0001/expenses"));
-        balanceButton.addEventListener("click", () => location.replace("/users/0001/balances"));
-
-    </script>
 
 </body>
 </html>
