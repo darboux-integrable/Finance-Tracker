@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Budgets</title>
+    <link type="text/css" rel="stylesheet" href="../../css/nav.css">
+    <link rel="stylesheet" href="../../css/balances.css">
+    
+</head>
+    <body>
+    <nav class="nav-bar">
+        <div class="nav-logo-container">
+            <img src="../../resources/Icon.svg" alt="Website Icon" class="logo-img">
+            <h1 class="nav-title">Wallet Watcher</h1>
+        </div>
+        <div class="nav-buttons">
+            <button class="nav-button nav-user-btn" id="loginButton">Log In</button>
+            <button class="theme-changer" id="themeBtn">
+                <img src="../../resources/ionicons/sunny.svg" id="changeIcon" data-theme="sunny" alt="☀️" class="change-icon"/>
+            </button>
+        </div>
+    </nav>
+
+
+
+    <h1 class="page-heading">An Overview of Your Wallet</h1>
+
+    <div class="money-overview-wrapper">
+
+        <div class="current-bal-container">
+            <h1 class="current-bal-label">Current Balance: $</h1>
+            <h1 class="current-bal-display" id="currentBalToDisplay">XXX.XX</h1>
+
+
+
+        </div>
+
+        <hr>
+
+        <div class="this-timeframe-bal-container">
+            <label class="this-timeframe-dropdown-labels" for="thisTimeframeDropdown">This</label>
+            <select class="this-timeframe-dropdown" id="thisTimeframeDropdown">
+                <option value="day">Day's</option>
+                <option value="week">Week's</option>
+                <option value="month">Month's</option>
+                <option value="year">Year's</option>
+            </select>
+
+            <label class="this-timeframe-dropdown-labels" for="thisTimeframeDropdown">total</label>
+            <select class="this-timeframe-dropdown" id="thisTimeframeDropdown">
+                <option value="incomes">Incomes</option>
+                <option value="expenses">Expenses</option>
+                <option value="both">Incomes & Expenses</option>
+            </select>
+
+            <h1 class="this-timeframe-bal-display">XXX.XX</h1>
+
+        </div>
+
+
+    </div>
+
+    <h1 class="page-heading">A Look into the Future...</h1>
+    <div class="money-overview-wrapper">
+        <label for="startingDate">From</label>
+        <input type="date" id="startingDate"/>
+        <label for="endingDate">to</label>
+        <input type="date" id="endingDate"/>
+        <h1>Visualized:</h1>
+        <canvas class="futureBalGraph"></canvas>
+    </div>
+
+
+
+
+    </body>
+</html>

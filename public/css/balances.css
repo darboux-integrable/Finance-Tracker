@@ -1,0 +1,94 @@
+:root:not([data-theme="moon"]){
+    --page-bg-color: #fff;
+
+    --background-color-1: #170312;
+    --background-color-2: #377AA9;
+    --background-color-3: #28587b;
+    --background-color-4: #66C3FF;
+    --background-color-5: #3d3879;
+
+    --dark-border-color-1: #66C3FF;
+
+    --nav-text-color: #fff;
+
+    --wave-color-1: #66c3ff;
+    --wave-color-2: #57a7dd;
+    --wave-color-3: #478bbb;
+    --wave-color-4: #37719a;
+    --wave-color-5: #28587b;
+    --wave-color-6: #655cc5;
+    --wave-color-7: #5a53b1;
+    --wave-color-8: #504a9e;
+    --wave-color-9: #46418b;
+    --wave-color-10: #3d3879;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.page-heading {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-family: "Arial Black";
+}
+
+
+/*
+.money-overview-wrapper::after {
+    --border-width: 10px;
+    content: "";
+    border-radius: 12px;
+    position: absolute;
+    top: calc(var(--border-width) / -2);
+    left: calc(var(--border-width) / -2);
+    z-index: -1;
+    width: calc(100% + var(--border-width));
+    height: calc(100% + var(--border-width));
+    background-image: linear-gradient(-45deg, var(--background-color-2), var(--background-color-4));
+
+}*/
+
+.money-overview-wrapper {
+    background: #eee;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    width: 50%;
+    position: relative;
+}
+.money-overview-wrapper::after {
+    --border-width: 10px;
+    content: "";
+    border-radius: 12px;
+    position: absolute;
+    top: calc(var(--border-width) / -2);
+    left: calc(var(--border-width) / -2);
+    z-index: -1;
+    width: calc(100% + var(--border-width));
+    height: calc(100% + var(--border-width));
+    background-image: linear-gradient(-45deg, var(--background-color-2), var(--background-color-4));
+}
+
+.current-bal-container {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    padding: 20px;
+}
+.current-bal-label {
+    margin: 0;
+    width: auto;
+}
+.current-bal-display {
+    margin: 0;
+    width: auto;
+    text-decoration: underline;
+}
+.this-timeframe-bal-container {
+    text-align: center;
+    padding: 20px;
+}
+
