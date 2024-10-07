@@ -111,7 +111,7 @@ app.get("/users/:id/expenses", (req, res) => {
 })
 
 app.get("/users/:id/balances", (req, res) => {
-    res.render("users/balances");
+    res.render("users/balance");
 })
 
 mongoose.connect("mongodb+srv://adamevanswork1:Ujthnje8@backenddb.jw0vt.mongodb.net/Node-API?retryWrites=true&w=majority&appName=BackendDB")

@@ -5,10 +5,10 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Budgets</title>
+    <title>Balance</title>
     <link type="text/css" rel="stylesheet" href="../../css/nav.css">
     <link rel="stylesheet" href="../../css/balances.css">
-    
+    <script type="module" defer src="../../js/balanceGraphing.js"></script>
 </head>
     <body>
     <nav class="nav-bar">
@@ -17,7 +17,7 @@
             <h1 class="nav-title">Wallet Watcher</h1>
         </div>
         <div class="nav-buttons">
-            <button class="nav-button nav-user-btn" id="loginButton">Log In</button>
+            <button class="nav-button nav-user-btn" id="logoutButton">Log Out</button>
             <button class="theme-changer" id="themeBtn">
                 <img src="../../resources/ionicons/sunny.svg" id="changeIcon" data-theme="sunny" alt="☀️" class="change-icon"/>
             </button>
@@ -38,8 +38,6 @@
 
         </div>
 
-        <hr>
-
         <div class="this-timeframe-bal-container">
             <label class="this-timeframe-dropdown-labels" for="thisTimeframeDropdown">This</label>
             <select class="this-timeframe-dropdown" id="thisTimeframeDropdown">
@@ -49,14 +47,14 @@
                 <option value="year">Year's</option>
             </select>
 
-            <label class="this-timeframe-dropdown-labels" for="thisTimeframeDropdown">total</label>
-            <select class="this-timeframe-dropdown" id="thisTimeframeDropdown">
+            <label class="this-timeframe-dropdown-labels" for="thisTimeframeDropdownType">total</label>
+            <select class="this-timeframe-dropdown" id="thisTimeframeDropdownType">
                 <option value="incomes">Incomes</option>
                 <option value="expenses">Expenses</option>
                 <option value="both">Incomes & Expenses</option>
             </select>
 
-            <h1 class="this-timeframe-bal-display">XXX.XX</h1>
+            <h1 class="this-timeframe-bal-display" id="thisTimeframeBalDisplay">XXX.XX</h1>
 
         </div>
 

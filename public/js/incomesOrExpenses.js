@@ -39,12 +39,21 @@ clearDataButton.addEventListener("click", () => {
 // Save any changes the user has made. 
 window.addEventListener("unload", e => {
     e.preventDefault();
+    e.returnValue = "";
     saveSessionStorageToDB();
+    alert("working")
 })
 
 window.addEventListener("close", e => {
     e.preventDefault();
     saveSessionStorageToDB();
+})
+
+window.addEventListener("beforeunload", e => {
+    e.preventDefault();
+    e.returnValue = "";
+    saveSessionStorageToDB();
+    alert("not working")
 })
 
 const numberOfIncomesOrExpenses = isIncomesPage
@@ -185,7 +194,8 @@ function addToSessionStorage(title, interval, amount){
     const newIncomeOrExpense = {
         title: title,
         interval: interval,
-        amount: amount
+        amount: amount,
+        date: new Date().getTime()
     }
 
     // Get the User from Session Storage

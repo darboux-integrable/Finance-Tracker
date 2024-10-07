@@ -137,7 +137,7 @@ body{
 
 /* Adam's Table CSS */
 
-.table{
+.table {
     display: flex;
     flex-direction: column;
     overflow-y: auto;
@@ -146,7 +146,7 @@ body{
     align-items: center;
 }
 
-.table-item{
+.table-item {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -155,12 +155,12 @@ body{
     animation: item-slide-in 250ms ease-out forwards;
 }
 
-.item-head{
+.item-head {
     display: flex;
     justify-content: space-between;
 }
 
-.item-title-container{
+.item-title-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -177,7 +177,7 @@ body{
 
 }
 
-.item-component{
+.item-component {
    padding: 0px;
    margin-bottom: 0px;
    margin-top: 0px;
@@ -185,7 +185,7 @@ body{
    font-family: "Open Sans", sans-serif;
 }
 
-.delete-table-item{
+.delete-table-item {
     background-color: #BB2124;
     color: white;
     border: none;
@@ -196,11 +196,11 @@ body{
     transition: transform 150ms;
 }
 
-.delete-table-item:hover{
+.delete-table-item:hover {
     transform: scale(1.05);
 }
 
-.light-table-item{
+.light-table-item {
     background-color: color-mix(in srgb, var(--wave-color-2), transparent 50%);
 }
 .dark-table-item {
@@ -208,27 +208,27 @@ body{
 
 }
 
-@keyframes item-slide-in{
+@keyframes item-slide-in {
 
-    0%{
+    0% {
         left: -50%;
         opacity: 0;
     }
-    100%{
-        left: 0px;
+    100% {
+        left: 0;
         opacity: 1;
     }
 
 }
 
-@keyframes item-slide-out{
+@keyframes item-slide-out {
 
-    0%{
-        left: 0px;
+    0% {
+        left: 0;
         opacity: 1;
     }
     
-    100%{
+    100% {
         left: 50%;
         opacity: 0;
     }
