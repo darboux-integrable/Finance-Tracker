@@ -1,11 +1,10 @@
 // Setting Current Bal Display
+
 const logoutButton = document.getElementById("logoutButton");
 logoutButton.addEventListener("click", () => {
     sessionStorage.clear();
     location.replace("/");
 });
-
-const balDisplay = document.getElementById("currentBalToDisplay");
 
 const SESSION_USER_KEY = "session.user.key";
 
@@ -35,21 +34,15 @@ const monthDays = {
     december: 31
 };
 
-
-const currentDate = new Date();
-let currentMonth = currentDate.getMonth();
 const months = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
 
 
-const daysSinceMonthStart = {
-    day: 0,
-    month: monthDays[months[currentMonth]],
-    year: 365
-}
+const balDisplay = document.getElementById("currentBalToDisplay");
+//balDispaly = addUpMoneyBetweenDates("both", 0, Date.now());
 
 
 
-/*
+
 const toTimeframeBalDisplay = document.getElementById("thisTimeframeBalDisplay");
 
 const thisTimeframeDropdown = document.getElementById("thisTimeframeDropdown");
@@ -62,15 +55,49 @@ thisTimeframeDropdown.addEventListener("input", (e) => {
     timeframe = thisTimeframeDropdown.value;
 
 
-    toTimeframeBalDisplay.textContent = addUpMoneyBetweenDates(balType, new Date.now().
 
+
+    toTimeframeBalDisplay.textContent = addUpMoneyToCurrentDay(timeframe);
 });
 
 thisTimeframeDropdownType.addEventListener("input", (e) => {
     balType = thisTimeframeDropdownType.value;
 
+    toTimeframeBalDisplay.textContent = addUpMoneyToCurrentDay(timeframe);
+});
 
-});*/
+function addUpMoneyToCurrentDay(timeframe) {
+    let dayCount = 0;
+    let currentDate = new Date();
+
+    if (timeframe === "day") {
+        dayCount = 1;
+    } else if (timeframe === "week") {
+        dayCount = currentDate.getDay()+1;
+    } else if (timeframe === "month") {
+        dayCount = currentDate.getDate();
+    } else if (timeframe === "year") {
+        let currentMonth = currentDate.getMonth();
+        for (let i = 0; i < currentMonth; i++) {
+            dayCount += monthDays[months[i].toLowerCase()];
+        }
+        dayCount += currentDate.getDate();
+        // Checks for leap year and if past february
+        if (currentDate.getFullYear() % 4 === 0 && currentDate.getMonth() > 1) {
+            dayCount++;
+        }
+    }
+
+    return addUpMoneyBetweenDates(balType, currentDate.getTime() - secToMS(dayCount), currentDate.getTime());
+}
+
+console.log(new Date().getDate() + " Current date!");
+
+
+function secToMS(num) {
+    num = num * (1000 * 60 * 60 * 24)
+    return num;
+}
 
 function addUpMoneyBetweenDates(incomeType, startDate, endDate) {
     // End date & Start date in MS
