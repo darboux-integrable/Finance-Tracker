@@ -12,9 +12,9 @@
 </head>
     <body>
     <nav class="nav-bar">
-        <div class="nav-logo-container">
-            <img src="../../resources/Icon.svg" alt="Website Icon" class="logo-img">
-            <h1 class="nav-title">Wallet Watcher</h1>
+        <div class="nav-logo-container" id="titleLogoContainer">
+                <img src="../../resources/Icon.svg" alt="Website Icon" class="logo-img">
+                <h1 class="nav-title">Wallet Watcher</h1>
         </div>
         <div class="nav-buttons">
             <button class="nav-button nav-user-btn" id="logoutButton">Log Out</button>
@@ -22,6 +22,7 @@
                 <img src="../../resources/ionicons/sunny.svg" id="changeIcon" data-theme="sunny" alt="☀️" class="change-icon"/>
             </button>
         </div>
+
     </nav>
 
 
@@ -31,8 +32,8 @@
     <div class="money-overview-wrapper">
 
         <div class="current-bal-container">
-            <h1 class="current-bal-label">Current Balance: $</h1>
-            <h1 class="current-bal-display" id="currentBalToDisplay">XXX.XX</h1>
+            <h1 class="current-bal-label">Current Balance: </h1>
+            <h1 class="current-bal-display" id="currentBalToDisplay">0</h1>
 
 
 
@@ -54,7 +55,7 @@
                 <option value="both">Incomes & Expenses</option>
             </select>
 
-            <h1 class="this-timeframe-bal-display" id="thisTimeframeBalDisplay">XXX.XX</h1>
+            <h1 class="this-timeframe-bal-display" id="thisTimeframeBalDisplay">0</h1>
 
         </div>
 
@@ -62,13 +63,22 @@
     </div>
 
     <h1 class="page-heading">A Look into the Future...</h1>
-    <div class="money-overview-wrapper">
-        <label for="startingDate">From</label>
-        <input type="date" id="startingDate"/>
-        <label for="endingDate">to</label>
-        <input type="date" id="endingDate"/>
+    <div class="money-overview-wrapper look-into-future-container">
+        <div class="top-timeframe-elements">
+
+            <select class="from-this-to-that-timeframe-type-dropdown" id="thisToThatTimeframeDropdownType">
+                <option value="incomes">Incomes</option>
+                <option value="expenses">Expenses</option>
+                <option value="both">Incomes & Expenses</option>
+            </select>
+            <label for="startingDate">from</label>
+            <input type="date" id="startingDate"/>
+            <label for="endingDate">to</label>
+            <input type="date" id="endingDate"/>
+            <h1 class="from-this-to-that-timeframe-bal" id="fromThisToThatTimeframeBalDisplay">Enter a starting and ending date!</h1>
+        </div>
         <h1>Visualized:</h1>
-        <canvas class="futureBalGraph"></canvas>
+        <canvas class="bal-graph" id="balOverTimeGraph"></canvas>
     </div>
 
 

@@ -32,20 +32,20 @@ app.post("/login", async (req, res) => {
         const users = await User.find({email: email});
 
         if(users.length == 0){
-            res.status(404).json({message: "User not"});
+            res.status(404).json({message: "User not found"});
             return;
         }
 
         const user = users[0];
 
-        if(await bcrypt.compare(req.body.password, user.password)){
+        if(await bcrypt.compare(req.body.password, user.password)) {
             res.status(200).json(user);
         } else {
             res.status(404).json({message: "The password does not match"});
         }
 
     } catch (error) {
-        res.status(500).json({message: "Internal Server Error", error: error.toString()})
+        res.status(500).json({message: "Internal Server Error", error: error.toString()});
     }
 
 })

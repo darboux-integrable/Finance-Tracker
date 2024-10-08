@@ -13,6 +13,19 @@ const clearDataButton = document.getElementById("clearDataButton");
 
 const isIncomesPage = window.location.href.includes("incomes");
 
+
+// Logging out
+const logoutButton = document.getElementById("logoutButton");
+logoutButton.addEventListener("click", () => {
+    sessionStorage.clear();
+    location.replace("/");
+});
+
+// Going to hub by clicking title
+document.getElementById("titleLogoContainer").addEventListener("click", () => {
+    location.replace("/users/"+JSON.parse(sessionStorage.getItem(SESSION_USER_KEY))._id+"/landing");
+})
+
 inputForm.addEventListener("submit", e => {
     e.preventDefault();
 

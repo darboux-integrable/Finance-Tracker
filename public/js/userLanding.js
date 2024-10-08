@@ -13,3 +13,14 @@ const balanceButton = document.getElementById("balanceButton");
 incomesButton.addEventListener("click", () => location.replace("/users/" + user._id + "/incomes"));
 expensesButton.addEventListener("click", () => location.replace("/users/" + user._id + "/expenses"));
 balanceButton.addEventListener("click", () => location.replace("/users/" + user._id + "/balances"));
+
+// Brings user back to landing page due to not being signed in yet
+const logoutButton = document.getElementById("logoutButton");
+logoutButton.addEventListener("click", () => {
+    sessionStorage.clear();
+    location.replace("/");
+});
+
+document.getElementById("titleLogoContainer").addEventListener("click", () => {
+    location.replace("/");
+})

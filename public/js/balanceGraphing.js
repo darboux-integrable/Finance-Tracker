@@ -1,4 +1,5 @@
 // Setting Current Bal Display
+const SESSION_USER_KEY = "session.user.key";
 
 const logoutButton = document.getElementById("logoutButton");
 logoutButton.addEventListener("click", () => {
@@ -6,7 +7,9 @@ logoutButton.addEventListener("click", () => {
     location.replace("/");
 });
 
-const SESSION_USER_KEY = "session.user.key";
+document.getElementById("titleLogoContainer").addEventListener("click", () => {
+    location.replace("/users/"+JSON.parse(sessionStorage.getItem(SESSION_USER_KEY))._id+"/landing");
+})
 
 const dropdownTypeToDay = {
     onetime: 0,
@@ -36,13 +39,6 @@ const monthDays = {
 
 const months = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
 
-
-const balDisplay = document.getElementById("currentBalToDisplay");
-//balDispaly = addUpMoneyBetweenDates("both", 0, Date.now());
-
-
-
-
 const toTimeframeBalDisplay = document.getElementById("thisTimeframeBalDisplay");
 
 const thisTimeframeDropdown = document.getElementById("thisTimeframeDropdown");
@@ -53,23 +49,74 @@ let balType = thisTimeframeDropdownType.value;
 
 thisTimeframeDropdown.addEventListener("input", (e) => {
     timeframe = thisTimeframeDropdown.value;
-
-
-
-
-    toTimeframeBalDisplay.textContent = addUpMoneyToCurrentDay(timeframe);
+    toTimeframeBalDisplay.textContent = cleanMoneyForDisplay(addUpMoneyToCurrentDay(balType, timeframe));
 });
 
 thisTimeframeDropdownType.addEventListener("input", (e) => {
     balType = thisTimeframeDropdownType.value;
-
-    toTimeframeBalDisplay.textContent = addUpMoneyToCurrentDay(timeframe);
+    toTimeframeBalDisplay.textContent = cleanMoneyForDisplay(addUpMoneyToCurrentDay(balType, timeframe));
 });
 
-function addUpMoneyToCurrentDay(timeframe) {
-    let dayCount = 0;
+toTimeframeBalDisplay.textContent = cleanMoneyForDisplay(addUpMoneyToCurrentDay(balType, timeframe)); // Initial Set Value
+
+const balDisplay = document.getElementById("currentBalToDisplay");
+balDisplay.textContent = cleanMoneyForDisplay(addUpMoneyBetweenDates("both", 0, new Date().getTime())); // Initial Set Value
+
+const certainDatesBalDisplay = document.getElementById("fromThisToThatTimeframeBalDisplay");
+
+const startingDateInput = document.getElementById("startingDate");
+const endingDateInput = document.getElementById("endingDate");
+
+const thisToThatTimeframeDropdownType = document.getElementById("thisToThatTimeframeDropdownType");
+
+let startDate = null;
+let endDate = null;
+let balTypeForThisToThatTime = thisToThatTimeframeDropdownType.value;
+
+
+thisToThatTimeframeDropdownType.addEventListener("input", (e) => {
+    balTypeForThisToThatTime = thisToThatTimeframeDropdownType.value;
+
+    if (balTypeForThisToThatTime === "Incomes & Expenses"){
+        balTypeForThisToThatTime = "both";
+    }
+
+    if (startDate !== null && endDate !== null) {
+        certainDatesBalDisplay.textContent = cleanMoneyForDisplay(addUpMoneyBetweenDates(balTypeForThisToThatTime, startDate.getTime(), endDate.getTime()));
+        newDataPoints();
+    }
+});
+
+startingDateInput.addEventListener("input", (e) => {
+    startDate = new Date(startingDateInput.value);
+
+    if (endDate !== null) {
+        if (startDate.getTime() > endDate.getTime()) {
+            startingDateInput.value = endingDateInput.value;
+        }
+        certainDatesBalDisplay.textContent = cleanMoneyForDisplay(addUpMoneyBetweenDates(balTypeForThisToThatTime, startDate.getTime(), endDate.getTime()));
+        newDataPoints();
+    }
+});
+
+endingDateInput.addEventListener("input", (e) => {
+    endDate = new Date(endingDateInput.value);
+
+    if (startDate !== null) {
+        if (endDate.getTime() < startDate.getTime()) {
+            endingDateInput.value = startingDateInput.value;
+        }
+        certainDatesBalDisplay.textContent = cleanMoneyForDisplay(addUpMoneyBetweenDates(balTypeForThisToThatTime, startDate.getTime(), endDate.getTime()));
+        newDataPoints();
+    }
+
+});
+
+function addUpMoneyToCurrentDay(balType, timeframe) {
+    let dayCount = JSON.parse(sessionStorage.getItem(SESSION_USER_KEY));
     let currentDate = new Date();
 
+    // Number of days since start of (not day), week, month, or year
     if (timeframe === "day") {
         dayCount = 1;
     } else if (timeframe === "week") {
@@ -82,6 +129,7 @@ function addUpMoneyToCurrentDay(timeframe) {
             dayCount += monthDays[months[i].toLowerCase()];
         }
         dayCount += currentDate.getDate();
+
         // Checks for leap year and if past february
         if (currentDate.getFullYear() % 4 === 0 && currentDate.getMonth() > 1) {
             dayCount++;
@@ -90,9 +138,6 @@ function addUpMoneyToCurrentDay(timeframe) {
 
     return addUpMoneyBetweenDates(balType, currentDate.getTime() - secToMS(dayCount), currentDate.getTime());
 }
-
-console.log(new Date().getDate() + " Current date!");
-
 
 function secToMS(num) {
     num = num * (1000 * 60 * 60 * 24)
@@ -108,21 +153,26 @@ function addUpMoneyBetweenDates(incomeType, startDate, endDate) {
     if(incomeType === "incomes" || incomeType === "both") {
         user.incomes.forEach(income => {
             let newStartDate = startDate;
-            if (newStartDate < income.date) {
-                newStartDate = income.date;
-            }
 
-            let dayDifference = Math.floor((endDate - newStartDate) / (1000 * 60 * 60 * 24));
-            let dayInterval = dropdownTypeToDay[income.interval.toLowerCase()];
+            if (!(endDate < income.date)) {
 
-            // Checks if type is onetime and should only multiple once, (if dayInterval == false)
-            let multiplyNum = 1;
-            if (dayInterval > 0) {
-                multiplyNum = Math.floor(dayDifference / dayInterval);
-            }
+                if (newStartDate < income.date) {
+                    newStartDate = income.date;
+                }
 
-            if(multiplyNum != 0) {
-                moneySum += parseInt(income.amount) * multiplyNum;
+                let dayDifference = Math.floor((endDate - newStartDate) / (1000 * 60 * 60 * 24));
+                let dayInterval = dropdownTypeToDay[income.interval.toLowerCase()];
+
+                // Checks if type is onetime and should only multiple once, (if dayInterval == false)
+                let multiplyNum = 1;
+                if (dayInterval > 0) {
+                    multiplyNum = Math.floor(dayDifference / dayInterval);
+                }
+
+                if (multiplyNum !== 0) {
+                    moneySum += parseFloat(income.amount) * multiplyNum;
+                }
+
             }
         });
     }
@@ -131,23 +181,100 @@ function addUpMoneyBetweenDates(incomeType, startDate, endDate) {
     if(incomeType === "expenses" || incomeType === "both") {
         user.expenses.forEach(expense => {
             let newStartDate = startDate;
-            if (newStartDate < expense.date) {
-                newStartDate = expense.date;
-            }
 
-            let dayDifference = Math.floor((endDate - newStartDate) / (1000 * 60 * 60 * 24));
-            let dayInterval = dropdownTypeToDay[expense.interval.toLowerCase()];
+            // Checks if the ending date is less than the expense, skips over if so
+            if (!(endDate < expense.date)) {
 
-            // Checks if type is onetime and should only multiple once, (if dayInterval == false)
-            let multiplyNum = 1;
-            if (dayInterval > 0) {
-                multiplyNum = Math.floor(dayDifference / dayInterval);
-            }
-            if(multiplyNum != 0) {
-                moneySum -= parseInt(expense.amount) * multiplyNum;
+                if (newStartDate < expense.date) {
+                    newStartDate = expense.date;
+                }
+
+                let dayDifference = Math.floor((endDate - newStartDate) / (1000 * 60 * 60 * 24));
+                let dayInterval = dropdownTypeToDay[expense.interval.toLowerCase()];
+
+                // Checks if type is onetime and should only multiple once, (if dayInterval == false)
+                let multiplyNum = 1;
+                if (dayInterval > 0) {
+                    multiplyNum = Math.floor(dayDifference / dayInterval);
+                }
+                if(multiplyNum !== 0) {
+                    moneySum -= parseFloat(expense.amount) * multiplyNum;
+                }
+
             }
         });
     }
 
-    return moneySum;
+    return parseFloat(moneySum).toFixed(2);
 }
+
+// Adds a subtraction sign in front if negative, and a dollar sign, returns a String
+function cleanMoneyForDisplay(moneyAmount) {
+    let moneyToDisplay = "";
+    if (moneyAmount < 0) {
+        moneyToDisplay += "-";
+    }
+
+    moneyToDisplay += "$ ";
+    moneyToDisplay += Math.abs(moneyAmount);
+
+    return moneyToDisplay;
+}
+
+// Graph
+
+import Chart from 'https://esm.sh/chart.js/auto';
+
+const ctx = document.getElementById('balOverTimeGraph');
+
+const chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [],
+        datasets: [
+            {
+                label: 'Money Over Time',
+                data: [0]
+            }
+        ]
+    },
+    options: {
+        animation: {
+            duration: 500,
+            easing: 'easeOutElastic'
+        },
+        scales: {
+            x: {
+                ticks: {
+                    minRotation: 0,
+                    maxRotation: 0
+                },
+            },
+            y: {
+                title: {
+                    display: true,  // Enable the y-axis title
+                    text: 'Current Balance ($)' // Set the label text
+                }
+            }
+        }
+    }
+});
+
+function newDataPoints() {
+    console.log(chart.data.datasets[0].data);
+    chart.data.datasets[0].data = [0];
+    chart.data.labels = [];
+    let dayDif = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24));
+
+    for (let i = 0; i < dayDif; i++){
+        chart.data.labels.push("Day "+i);
+        chart.data.datasets[0].data.push(addUpMoneyBetweenDates(balTypeForThisToThatTime, startDate.getTime(), startDate.getTime()+((i+1) * (1000 * 60 * 60 * 24))));
+        console.log(addUpMoneyBetweenDates(balTypeForThisToThatTime, startDate.getTime(), startDate.getTime()+((i+1) * (1000 * 60 * 60 * 24))));
+    }
+
+    chart.update(); // Push updates to chart
+}
+
+window.addEventListener('resize', function(){
+    chart.resize();
+});

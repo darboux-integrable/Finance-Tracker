@@ -23,6 +23,12 @@ const errorText = document.getElementById("errorText");
 
 const SESSION_USER_KEY = "session.user.key";
 
+
+// Brings user back to landing page due to not being signed in yet
+document.getElementById("titleLogoContainer").addEventListener("click", () => {
+    location.replace("/");
+})
+
 signUpButton.addEventListener("click", async () => {
 
     let areInputsFilled = true;

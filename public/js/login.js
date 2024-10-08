@@ -7,6 +7,12 @@ const signUpButton = document.getElementById("signUpButton");
 
 const SESSION_USER_KEY = "session.user.key";
 
+
+// Brings user back to landing page due to not being signed in yet
+document.getElementById("titleLogoContainer").addEventListener("click", () => {
+    location.replace("/");
+})
+
 loginButton.addEventListener("click", () => {
 
     if(emailInput.value == "" || passwordInput.value == ""){
@@ -40,6 +46,7 @@ loginButton.addEventListener("click", () => {
             sessionStorage.setItem(SESSION_USER_KEY, JSON.stringify(data));
             location.replace("/users/" + id + "/landing");
         } else {
+            console.log(data)
             errorText.innerText = data.message;
             errorText.style.opacity = "1";
         }
