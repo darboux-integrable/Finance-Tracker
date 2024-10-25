@@ -40,17 +40,11 @@ class gradientCircle{
     }
 
     setCoordinates(newX, newY){
-        console.log(this.x + " circle x");
-        console.log(mouse.x+" mouse x");
-        const angle = Math.atan2(this.y - newY, this.x - newX);
-        const distance = Math.sqrt(Math.pow(this.x - newX, 2) + Math.pow(this.y - newY, 2));
-        this.x -= Math.cos(angle) * (distance / 25);
-        this.y -= Math.sin(angle) * (distance / 25);
+        this.x = newX;
+        this.y = newY;
+
     }
 
-    updateRadius(mouseX, mouseY){
-        this.r2 = 150-Math.sqrt(Math.pow(this.x - mouseX, 2) + Math.pow(this.y - mouseY, 2))*2;
-    }
 }
 
 
@@ -66,23 +60,11 @@ downloadButton.addEventListener("mousemove", (e) => {
     canvasStats = canvas.getBoundingClientRect();
     mouse.x = e.clientX- canvasStats.x;
     mouse.y = e.clientY- canvasStats.y;
-    for(let i = 0; i < 10; i++){
-        setTimeout(animate, i * 200);
-    }
-
-
-    console.log(circle.r2);
-    circle.draw(ctx);
+    animate();
 
 });
 
 function animate(){
     circle.setCoordinates(mouse.x , mouse.y);
-    circle.updateRadius(mouse.x, mouse.y);
+    circle.draw(ctx);
 }
-
-downloadButton.addEventListener("mouseleave", (e) => {
-    setTimeout(function(){
-        circle.r2 = 0;
-    }, 1000);
-});

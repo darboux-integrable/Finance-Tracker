@@ -363,45 +363,6 @@ body{
     z-index: 5;
 }
 
-/* How to Use */
-
-.how-to-use-section{
-
-    margin-left: 30px;
-    padding-top: 30px;
-    padding-bottom: 50px;
-
-}
-
-.how-to-use-text{
-
-    font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
-
-}
-
-.how-to-use-text > strong{
-    font-family: "Nerko One", cursive;
-    font-size: xx-large;
-    font-weight: 400;
-    font-style: normal;
-    margin: 0px;
-}
-
-.how-to-use-title{
-    font-size: 3rem;
-    font-family: "Nerko One", cursive;
-    font-weight: 400;
-    font-style: normal;
-
-    margin: 0px;
-}
-
-.how-to-use-text{
-    width: 65ch;
-}
-
-
 /* Download */
 
 /* ///////////////////////// */
